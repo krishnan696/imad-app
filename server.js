@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 app.get('//best-background-pictures-for-laptop-hd-wallpaper.jpg', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', '/best-background-pictures-for-laptop-hd-wallpaper.jpg'));
+  res.sendFile(path.join(__dirname, 'ui', 'best-background-pictures-for-laptop-hd-wallpaper.jpg'));
 });
 app.get('/article-one',function (req, res){
     res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
