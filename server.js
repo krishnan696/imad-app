@@ -4,7 +4,7 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var articleOne={
+var articleone={
     title : 'articleone|krishnan',
     heading: 'articleone',
     date: '20 aug 2017',
@@ -31,7 +31,7 @@ var articleOne={
     
     
     `
-}
+};
 var articleTwo={
     title : 'articleTwo|krishnan',
     heading: 'articleTwo',
@@ -59,7 +59,7 @@ var articleTwo={
     
     
     `
-}
+};
 var articleThree={
     title : 'articleThree|krishnan',
     heading: 'articlethree',
@@ -87,7 +87,7 @@ var articleThree={
     
     
     `
-}
+};
 function createTemplate(data){
     var title=data.title; 
     var heading=data.heading;
@@ -136,7 +136,7 @@ app.get('//best-background-pictures-for-laptop-hd-wallpaper.jpg', function (req,
   res.sendFile(path.join(__dirname, 'ui', 'best-background-pictures-for-laptop-hd-wallpaper.jpg'));
 });
 app.get('/:articleName',function (req, res){
-    var articleName=req.parans.articleName;
+    var articleName= req.parans.articleName;
     res.send(createTemplate(articles[articleName]));
 });
 
