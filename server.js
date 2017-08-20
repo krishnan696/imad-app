@@ -134,7 +134,7 @@ function createTemplate(data){
 
 
 app.get('/', function (req, res) {
-  res.sendt-File(path.join(__dirname, 'ui', 'index.html'));
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 var count=0;
 app.get('/counter',function(req,res){
