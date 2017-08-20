@@ -5,7 +5,7 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 var articles = {
-     'article-one' : {
+     'articleOne' : {
         title : 'articleone|krishnan',
         heading: 'articleone',
         date: '20 aug 2017',
