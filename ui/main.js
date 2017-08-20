@@ -1,13 +1,7 @@
-console.log('Loaded!');
-var element =document.getElementById("main-text");
-element.innerHTML="java script";
-//move img to right
-var img= document.getElementById("img");
-var margin=0;
-function right(){
-    margin=margin+1;
-    img.style.marginLeft =margin+'px';
-}
-img.onclick = function() {
-    var interval=setInterval( right,10) ;
+var button = document.getElementById('button');
+var counter=0;
+button.onclick=function(){
+    counter=counter+1;
+    var count=document.getElementById('count');
+    count.innerHTML(counter.toString());
 };
