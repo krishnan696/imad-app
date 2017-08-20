@@ -139,7 +139,7 @@ app.get('/', function (req, res) {
 var count=0;
 app.get('/counter',function(req,res){
     count=count+1;
-    res.send(count);
+    res.send(count.toString());
     
 });
 app.get('/ui/best.jpg', function (req, res) {
