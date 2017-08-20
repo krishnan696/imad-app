@@ -4,35 +4,92 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var articleOne=
-{
-    title : 'articleone|krishnan',
-    heading: 'articleone',
-    date: '20 aug 2017',
-    content:`
-    
-        <p>
-            this is the 
-            Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
-        </p>
-    
-        <p>
-            this is the para
-            Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
-        </p>
-    
-        <p>
-            this is the para
-            Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
-        </p>
-        <p>
-            this is the para
-            Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
-        </p>
-    
-    
-    `
-}
+var articles={
+    var articleOne={
+        title : 'articleone|krishnan',
+        heading: 'articleone',
+        date: '20 aug 2017',
+        content:`
+        
+            <p>
+                this is the 
+                Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
+            </p>
+        
+            <p>
+                this is the para
+                Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
+            </p>
+        
+            <p>
+                this is the para
+                Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
+            </p>
+            <p>
+                this is the para
+                Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
+            </p>
+        
+        
+        `
+    },
+    var articleThree={
+        title : 'articleThree|krishnan',
+        heading: 'articleThree',
+        date: '20 aug 2017',
+        content:`
+        
+            <p>
+                this is the 
+                Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
+            </p>
+        
+            <p>
+                this is the para
+                Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
+            </p>
+        
+            <p>
+                this is the para
+                Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
+            </p>
+            <p>
+                this is the para
+                Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
+            </p>
+        
+        
+        `
+    },
+    var articleTwo={
+        title : 'articleTwo|krishnan',
+        heading: 'articleTwo',
+        date: '20 aug 2017',
+        content:`
+        
+            <p>
+                this is the 
+                Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
+            </p>
+        
+            <p>
+                this is the para
+                Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
+            </p>
+        
+            <p>
+                this is the para
+                Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
+            </p>
+            <p>
+                this is the para
+                Java software for your computer, or the Java Runtime Environment, is also referred to as the Java Runtime, Runtime Environment, Runtime, JRE, Java Virtual Machine, Virtual Machine, Java VM, JVM, VM, Java plug-in, Java plugin, Java add-on or Java download
+            </p>
+        
+        
+        `
+    }
+};
 function createTemplate(data){
     var title=data.title; 
     var heading=data.heading;
@@ -90,11 +147,12 @@ function createTemplate(data){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('//best-background-pictures-for-laptop-hd-wallpaper.jpg', function (req, res) {
+app.get('/best-background-pictures-for-laptop-hd-wallpaper.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'best-background-pictures-for-laptop-hd-wallpaper.jpg'));
 });
-app.get('/article-one',function (req, res){
-    res.send(createTemplate(articleOne));
+app.get('/:articleName',function (req, res){
+    var articleName=req.parans.articleName;
+    res.send(createTemplate(articles[articleName]));
 });
 app.get('/article-three',function (req, res){
     res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
