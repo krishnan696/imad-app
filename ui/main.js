@@ -1,7 +1,7 @@
 var button = document.getElementById('button');
 button.onclick=function(){
     var request= new XMLHttpRequest();
-    request.onReadyStateChange = function()
+    request.onereadystatechange = function()
     {
       if(request.readyState===XMLHttpRequest.DONE)
       {
