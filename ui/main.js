@@ -15,7 +15,7 @@ button.onclick=function(){
       }
     };
     request.open('GET', 'http://kris15226ec.imad.hasura-app.io/counter', true );
-    request.send(NULL);         
+    request.send(null);         
 
    
 };
