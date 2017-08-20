@@ -3,9 +3,9 @@ button.onclick=function(){
 var request= new XMLHttpRequest();
 request.onReadyStateChange = function()
 {
-  if(request.readyState== XMLHttpRequest.DONE)
+  if(request.readyState===XMLHttpRequest.DONE)
   {
-      if(request.status==200)
+      if(request.status===200)
       {
           var counter=request.responseText();
           counter=counter+1;
