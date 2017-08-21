@@ -21,8 +21,7 @@ button.onclick=function(){
    
 };
 //list the given names
-var nameInput=document.getElementById('name');
-var name=nameInput.value;
+
 var sumbit=document.getElementById('sumbit');
 submit.onclick= function(){
     var request= new XMLHttpRequest();
@@ -34,7 +33,7 @@ submit.onclick= function(){
           {
                var names=request.responseText;
                names=JSON.parse(names);
-               names.push(name);
+           
                var list='';
            
                for(var i=0;i<names.length;i++)
@@ -46,7 +45,9 @@ submit.onclick= function(){
           }
       }
     }
-    request.open('GET', 'http://kris15226ec.imad.hasura-app.io/submit-names?name='+name, true );
+    var nameInput=document.getElementById('name');
+    var name=nameInput.value;
+    request.open('GET', 'http://kris15226ec.imad.hasura-app.io/submit-names?name='+ name, true );
     request.send(null); 
   
 };
