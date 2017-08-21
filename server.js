@@ -141,8 +141,8 @@ app.get('/counter',function(req,res){
 });
 var names=[];
 app.get('/submit-names/:name',function(req,res){
-    var names=req.params.name;
-    names.push(names);
+    var names1=req.params.name;
+    names.push(names1);
     res.send(JSON.stringify(names));
     
 });
