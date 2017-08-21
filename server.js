@@ -140,8 +140,8 @@ app.get('/counter',function(req,res){
     res.send(count.toString());
 });
 var names=[];
-app.get('/submit-names/:name',function(req,res){
-    var names1=req.params.name;
+app.get('/submit-names',function(req,res){
+    var names1=req.query.name;
     names.push(names1);
     res.send(JSON.stringify(names));
     
