@@ -131,8 +131,6 @@ function createTemplate(data){
     `;
     return htmlTemplate;
 }
-
-
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -140,15 +138,24 @@ var count=0;
 app.get('/counter',function(req,res){
     count=count+1;
     res.send(count.toString());
+});
+var names=[];
+app.get('/submit-names/:name',function(req,res){
+    var names=re.params.name;
+    names.push(names);
+    res.send(JSON.stringify(names));
     
 });
+
+
+
 app.get('/ui/best.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'best.jpg'));
 });
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
-app.get('/:articleName',function (req, res){
+app.get('/:articleNme',function (req, res){
     var articleName = req.params.articleName;
     res.send(createTemplate(articles[articleName]));
 });
