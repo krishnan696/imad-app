@@ -32,9 +32,9 @@ submit.onclick= function(){
       {
           if(request.status=== 200)
           {
-               var name=request.responseText;
-               var names=[];
-               names.push(name);
+               var names=request.responseText;
+               names=JSON.parse(names);
+               name.push(name)
                var list='';
            
                for(var i=0;i<names.length;i++)
@@ -46,7 +46,7 @@ submit.onclick= function(){
           }
       }
     }
-    request.open('GET', 'http://kris15226ec.imad.hasura-app.io/submit-names?name=', true );
+    request.open('GET', 'http://kris15226ec.imad.hasura-app.io/submit-names?name='+name, true );
     request.send(null); 
   
 };
