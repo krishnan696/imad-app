@@ -46,7 +46,7 @@ submit.onclick= function(){
           }
       }
     }
-    request.open('GET', 'http://kris15226ec.imad.hasura-app.io/submit-names', true );
+    request.open('GET', 'http://kris15226ec.imad.hasura-app.io/submit-names?name=', true );
     request.send(null); 
   
 };
