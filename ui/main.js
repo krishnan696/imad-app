@@ -25,13 +25,15 @@ button.onclick=function(){
 var sumbit=document.getElementById('sumbit');
 submit.onclick= function(){
     var request= new XMLHttpRequest();
-    request.onreadystatechange = function()
+    
+   { request.onreadystatechange = function()
     {
       if(request.readyState===XMLHttpRequest.DONE)
       {
           if(request.status=== 200)
           {
                var names=request.responseText;
+               
                names=JSON.parse(names);
            
                var list='';
@@ -44,6 +46,8 @@ submit.onclick= function(){
                ul.innerHTML=list;
           }
       }
+    
+    }
     }
     var nameInput=document.getElementById('name');
     var name=nameInput.value;
