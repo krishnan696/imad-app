@@ -26,7 +26,7 @@ var sumbit=document.getElementById('sumbit');
 submit.onclick= function(){
     var request= new XMLHttpRequest();
     
-   { request.onreadystatechange = function()
+    request.onreadystatechange = function()
     {
       if(request.readyState===XMLHttpRequest.DONE)
       {
@@ -47,7 +47,7 @@ submit.onclick= function(){
           }
       }
     
-    }
+    
     }
     var nameInput=document.getElementById('name');
     var name=nameInput.value;
