@@ -183,10 +183,26 @@ app.get('/ui/best.jpg', function (req, res) {
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
-app.get('/:articleNme',function (req, res){
-    var articleName = req.params.articleName;
-    res.send(createTemplate(articles[articleName]));
-});
+app.get('/articles/:articleNme',function (req, res){
+    pool.query("SELECT * FROM articles WHERE title="+ req.parans.articleName, function(err,result){
+       if(err)
+       {
+           res.send(500).send(err.toString());
+       }
+       else if(result.rows.length()===0)
+           {
+               res.send(404).send("file not found");
+           }
+       
+        else{
+            var articleData = result.rows[0];
+             res.send(createTemplate(articleData));
+        }
+        
+       });
+    });
+   
+
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
