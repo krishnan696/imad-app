@@ -183,7 +183,7 @@ app.get('/ui/best.jpg', function (req, res) {
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
-app.get('/articles/:articleNme',function (req, res){
+app.get('/articles/:articleName',function (req, res){
     pool.query("SELECT * FROM articles WHERE title="+ req.parans.articleName, function(err,result){
        if(err)
        {
