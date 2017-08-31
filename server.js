@@ -128,7 +128,7 @@ function createTemplate(data){
                 
                 
                 <div>
-                    ${date}
+                    ${date.toDateString()}
                 </div>
             
                
