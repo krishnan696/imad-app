@@ -93,7 +93,7 @@ app.get('/submit-names',function(req,res){
 function hash(input,salt)
 {
     var hashedString=Crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
-    return [pbkdf2,salt,10000,hashedString.toString('hex')].join('$');
+    return ['pbkdf2',salt,10000,hashedString.toString('hex')].join('$');
     
 }
 var salt='i-love-u';
