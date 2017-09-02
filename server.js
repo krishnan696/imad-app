@@ -96,7 +96,7 @@ function harsh(input,salt)
     return harshString.toString('hex');
     
 }
-
+var salt='i-love-u';
 app.get('/harsh/:input',function(req,res){
    var harshString=harsh(req.params.input,salt);
    return harshString;
