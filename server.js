@@ -92,14 +92,14 @@ app.get('/submit-names',function(req,res){
 });
 function hash(input,salt)
 {
-    var hashedString=Crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
+    var hashedString=Crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
     return hashedString.toString('hex');
     
 }
 var salt='i-love-u';
 app.get('/hash/:input',function(req,res){
    var hashString=hash(req.params.input,salt);
-   res.send( hashString);
+   res.send(['pbkdf2',salt,10000, hashString]);
 });
 
 app.get('/ui/best.jpg', function (req, res) {
