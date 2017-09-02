@@ -90,16 +90,16 @@ app.get('/submit-names',function(req,res){
     res.send(JSON.stringify(names));
     
 });
-function harshs(input,salt)
+function hash(input,salt)
 {
-    var harshedString=Crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
-    return harshString.toString('hex');
+    var hashedString=Crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
+    return hashedString.toString('hex');
     
 }
 var salt='i-love-u';
-app.get('/harsh/:input',function(req,res){
-   var harshString=harshs(req.params.input,salt);
-   res.send( harshString);
+app.get('/hash/:input',function(req,res){
+   var hashString=hash(req.params.input,salt);
+   res.send( hashString);
 });
 
 app.get('/ui/best.jpg', function (req, res) {
