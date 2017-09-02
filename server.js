@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool=require('pg').Pool;
+var crypto=require('crypto');
 
 var config=
 {
@@ -89,11 +90,21 @@ app.get('/submit-names',function(req,res){
     res.send(JSON.stringify(names));
     
 });
+function harsh(input,salt)
+{
+    var harshedString=crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
+    return harshString.toString('hex');
+    
+}
 
-
+app.get('/harsh/:input',function(req,res){
+   var harshString=harsh(req.params.input,salt);
+   return harshString;
+});
 
 app.get('/ui/best.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'best.jpg'));
+
 });
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
