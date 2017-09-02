@@ -90,7 +90,7 @@ app.get('/submit-names',function(req,res){
     res.send(JSON.stringify(names));
     
 });
-function harsh(input,salt)
+function harshs(input,salt)
 {
     var harshedString=crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
     return harshString.toString('hex');
@@ -98,8 +98,8 @@ function harsh(input,salt)
 }
 var salt='i-love-u';
 app.get('/harsh/:input',function(req,res){
-   var harshString=harsh(req.params.input,salt);
-   return harshString;
+   var harshString=harshs(req.params.input,salt);
+   res.send( harshString);
 });
 
 app.get('/ui/best.jpg', function (req, res) {
