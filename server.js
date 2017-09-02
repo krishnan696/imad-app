@@ -2,7 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool=require('pg').Pool;
-var crypto=require('crypto');
+var Crypto=require('crypto');
 
 var config=
 {
@@ -92,7 +92,7 @@ app.get('/submit-names',function(req,res){
 });
 function harshs(input,salt)
 {
-    var harshedString=crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
+    var harshedString=Crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
     return harshString.toString('hex');
     
 }
