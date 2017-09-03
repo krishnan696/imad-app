@@ -185,6 +185,10 @@ app.post('/create-user',function(req,res){
          res.send("u r not login in");
      }
  });
+ app.get('/logout',function(req,res){
+     delete session.auth.userId;
+     res.send("you are logout ");
+ });
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
