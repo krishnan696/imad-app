@@ -11,26 +11,25 @@ submit.onclick= function(){
       {
           if(request.status=== 200)
           {
-               var names=request.responseText;
-               
-               names=JSON.parse(names);
-           
-               var list='';
-           
-               for(var i=0;i<names.length;i++)
-               {
-                   list +='<li>'+ names[i] +'</li>';
-               }
-               var ul=document.getElementById('list');
-               ul.innerHTML=list;
+             alert("login successfully")
+          }else if(request.status===403)
+          {
+              alert("username/password incorrect");
+          }else if(request.status===500)
+          {
+              alert("something went wrong");
+              
           }
       }
     
     
     }
-    var username=document.getElementById('name').value;
-  
-    request.open('GET', 'http://kris15226ec.imad.hasura-app.io/submit-names?name='+ name, true );
-    request.send(null); 
+    var username=document.getElementById('username').value;
+     var password=document.getElementById('password').value;
+     console.log(username);
+     console.log(password);
+    request.open('POST', 'http://kris15226ec.imad.hasura-app.io/create-user', true );
+    request.setRequestHeader("Content-Type","application/json");
+    request.send({username:username,password:password}); 
   
 };
