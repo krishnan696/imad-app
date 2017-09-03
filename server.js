@@ -129,12 +129,12 @@ app.get('/articles/:articleName',function (req, res){
         
        });
     });
-app.post('\create-user',function(req,res){
+app.post('/create-user',function(req,res){
    var username=req.body.username;
    var password=req.body.password;
    var salt=getRandomBytes(128).toString('hex');
    var dbString=hash(password,salt);
-   pool.query('INSERT INTO "user"(username,password) VALUES($1,$2)',[ussename,dbString],function(err,result){
+   pool.query('INSERT INTO "user"(username,password) VALUES($1,$2)',[username,dbString],function(err,result){
        if(err){
            res.status(500).send(err.toString());
        }
@@ -145,6 +145,32 @@ app.post('\create-user',function(req,res){
            
    });
    });
+ app.post('/login',function(req,res){
+      var username=req.body.username;
+      var password=req.body.password;
+     Pool.query('SELECT * FROM "user" WHERE username=$1 ',[username],function(err,result){
+       if(err){
+           res.status(500).send(err.toString());
+       }
+       else if(result.row.length===0){
+           res.ststus(505).send("user/password is incorrect");
+       }
+           else{
+               var dbString=result.row[0].password;
+               var salt=result.split('$')[2];
+               var hashPassword=hash(password,salt);
+               if(hashPassword===dbString){
+                   res.send("successful login");
+               }
+               else{
+                   res.send("username/password is incorrect");
+               }
+                   
+           
+       }
+           
+   });
+ });
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
