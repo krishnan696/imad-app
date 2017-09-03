@@ -11,7 +11,7 @@ submit.onclick= function(){
       {
           if(request.status=== 200)
           {
-             alert("login successfully")
+             alert("login successfully");
           }else if(request.status===403)
           {
               alert("username/password incorrect");
@@ -23,12 +23,12 @@ submit.onclick= function(){
       }
     
     
-    }
+    };
     var username=document.getElementById('username').value;
     var password=document.getElementById('password').value;
      console.log(username);
      console.log(password);
-    request.open('POST', 'http://kris15226ec.imad.hasura-app.io/create-user', true );
+    request.open('POST', 'http://kris15226ec.imad.hasura-app.io/login', true );
     request.setRequestHeader("Content-Type","application/json");
     request.send(JSON.stringify({username:username,password:password})); 
   
