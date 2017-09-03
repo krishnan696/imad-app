@@ -186,7 +186,8 @@ app.post('/create-user',function(req,res){
      }
  });
  app.get('/logout',function(req,res){
-     delete req.session.auth.userId;
+     if(req.session.auth)
+    delete req.session.auth.userId;
      res.send("you are logout ");
  });
 app.get('/ui/style.css', function (req, res) {
