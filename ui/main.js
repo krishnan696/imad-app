@@ -25,7 +25,7 @@ submit.onclick= function(){
     
     }
     var username=document.getElementById('username').value;
-     var password=document.getElementById('password').value;
+    var password=document.getElementById('password').value;
      console.log(username);
      console.log(password);
     request.open('POST', 'http://kris15226ec.imad.hasura-app.io/create-user', true );
