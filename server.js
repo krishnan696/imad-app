@@ -136,7 +136,7 @@ app.post('/create-user',function(req,res){
    var dbString=hash(password,salt);
    console.log(username);
    console.log(dbString);
-   Pool.query('INSERT INTO "user"("username","password") VALUES($1,$2);',[username,dbString],function(err,result){
+   pool.query('INSERT INTO "user"("username","password") VALUES($1,$2);',[username,dbString],function(err,result){
        if(err){
            res.status(500).send(err.toString());
        }
@@ -150,7 +150,7 @@ app.post('/create-user',function(req,res){
  app.post('/login',function(req,res){
       var username=req.body.username;
       var password=req.body.password;
-     Pool.query('SELECT * FROM "user" WHERE username=$1 ',[username],function(err,result){
+     pool.query('SELECT * FROM "user" WHERE username=$1 ',[username],function(err,result){
        if(err){
            res.status(500).send(err.toString());
        }
