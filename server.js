@@ -132,7 +132,7 @@ app.get('/articles/:articleName',function (req, res){
 app.post('/create-user',function(req,res){
    var username=req.body.username;
    var password=req.body.password;
-   var salt=Crypto.getRandomBytes(128).toString('hex');
+   var salt=Crypto.randomBytes(128).toString('hex');
    var dbString=hash(password,salt);
    console.log(username);
    console.log(dbString);
