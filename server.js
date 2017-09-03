@@ -155,7 +155,7 @@ app.post('/create-user',function(req,res){
            res.status(500).send(err.toString());
        }
        else if(result.row.length===0){
-           res.ststus(505).send("user/password is incorrect");
+           res.status(505).send("user/password is incorrect");
        }
            else{
                var dbString=result.row[0].password;
