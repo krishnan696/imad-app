@@ -165,6 +165,7 @@ app.post('/create-user',function(req,res){
                var salt=dbString.split('$')[2];
                var hashPassword=hash(password,salt);
                if(hashPassword===dbString){
+                   req.session.auth={userId : result.rows[0].id};
                    res.send("successful login");
                }
                else{
@@ -175,6 +176,14 @@ app.post('/create-user',function(req,res){
        }
            
    });
+ });
+ app.get('/check-login',function(req,res){
+     if(req.session&&req.session.auth&&req.session.auth.userId){
+         res.send("user already login");
+     }else
+     {
+         res.send("u r not login in");
+     }
  });
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
