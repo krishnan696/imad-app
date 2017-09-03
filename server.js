@@ -119,7 +119,7 @@ app.get('/articles/:articleName',function (req, res){
        }
        else if(result.rows.length===0)
            {
-               res.send(404).send("file not found");
+               res.send(403).send("file not found");
            }
        
         else{
